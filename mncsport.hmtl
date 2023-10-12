@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<meta name="referrer" content="no-referrer" />
+ <script src="https://ajax.googleapis.com/ajax/libs/shaka-player/4.4.2/shaka-player.compiled.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/shaka-player/4.4.2/shaka-player.compiled.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.4.2/shaka-player.ui.min.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/NaughtyJoker29/code/tele.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.3/controls.min.css">
+<link href="https://fonts.googleapis.com/css?family=Material+Icons+Sharp" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+	@import "https://fonts.googleapis.com/css?family=Play:300,400,700";
+	@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700";
+	@import "https://fonts.googleapis.com/css?family=Monda:300,400,700";
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+  
+  <script type='text/javascript'>
+//<![CDATA[
+
+
+function redirectCU(e) {
+  if (e.ctrlKey && e.which == 85) {
+    window.location.replace("https://www.google.com/");
+    return false;
+  }
+}
+document.onkeydown = redirectCU;
+
+
+function redirectKK(e) {
+  if (e.which == 3) {
+    window.location.replace("https://www.google.com/");
+    return false;
+  }
+}
+document.oncontextmenu = redirectKK;
+//]]>
+</script>
+  
+</head>
+<body bgcolor='black' style='margin:0'>
+
+<div class="xyz2">
+<div data-shaka-player-container="" class="shaka-mobile shaka-video-container" shaka-controls="true" style=""><video autoplay="" autostart="true" data-shaka-player="" poster="" id="xyz2" style="width: 100vw; height: calc(var(--vh, 1vh) * 100);" class="shaka-video" src="" __idm_id__="2195457"></video>
+</div></div>
+
+<script type="text/javascript">
+const xyz2_manifestUri = 'https://nyanv-live-cdn.mncnow.id/live/eds/MNCSports-HD/sa_dash_vmx/MNCSports-HD.mpd';
+async function init() {
+  const video = document.getElementById('xyz2');
+    const ui = video['ui'];
+    const config = {
+      'seekBarColors': {
+        base: 'rgba(255,255,255,.2)',
+        buffered: 'rgba(255,255,255,.4)',
+        played: 'rgb(255,0,0)',
+      }
+    }
+   ui.configure(config);
+    const controls = ui.getControls();
+    const player = controls.getPlayer();
+    player.configure({
+  drm                               : {
+  clearKeys                         : {
+//   'key-id-in-hex'                : 'key-in-hex',
+    '531c6d50e3e9f9ba66446f624f492289': 'd769d9ae238bdd424f8bcdcdc9a3801f',
+    }
+  }
+})
+  // Attach player and ui to the window to make it easy to access in the JS console.
+  window.player = player;
+  window.ui = ui;
+  // Listen for error events.
+  player.addEventListener('error', onPlayerErrorEvent);
+  controls.addEventListener('error', onUIErrorEvent);
+    try {
+      await player.load(xyz2_manifestUri);
+    } catch (error) {
+      onPlayerError(error);
+    }
+function onPlayerErrorEvent(errorEvent) {
+  // Extract the shaka.util.Error object from the event.
+  onPlayerError(event.detail);
+}
+function onPlayerError(error) {
+  // Handle player error
+  console.error('Error code', error.code, 'object', error);
+}
+function onUIErrorEvent(errorEvent) {
+  // Extract the shaka.util.Error object from the event.
+  onPlayerError(event.detail);
+}
+function initFailed(errorEvent) {
+  // Handle the failure to load; errorEvent.detail.reasonCode has a
+  // shaka.ui.FailReasonCode describing why.
+  console.error('Unable to load the UI library!');
+}
+    // TODO find a way to do this without jquery. -___- or find a way to replace them CSS. maybe usering :after  
+    $('.shaka-overflow-menu-button').html('settings');
+    $('.shaka-back-to-overflow-button .material-icons-round').html('arrow_back_ios_new');
+}
+document.addEventListener('shaka-ui-loaded', init);
+// Listen to the custom shaka-ui-load-failed event, in case Shaka Player fails
+// to load (e.g. due to lack of browser support).
+document.addEventListener('shaka-ui-load-failed', initFailed);
+</script>
+  
+ <div id="tme"><div id="tme_message"><button class="clossalert" onclick='document.getElementById("tme").style.display="none"'>X</button><strong>Join Our Telegram Group</strong><p>For More Matches Information <a href="https://t.me/+LGtQaxWhTm80NmJl" target="_blank"> Join Now !!!</a> </p></div><a href="https://t.me/+LGtQaxWhTm80NmJl" target="_blank"><svg fill="rgb(255, 255, 255)" height="25" viewBox="0 0 33 33" width="25"><path d="M27.1566711,3.01477064 C27.5924362,2.97926122 28.0620472,2.99321135 28.4483128,3.22233167 C28.7931173,3.42270627 28.9928078,3.82091907 29,4.2127909 C28.9860386,4.54505764 28.9610773,4.87647891 28.9314622,6.00747745 C28.7884635,6.88741129 28.4986585,8.55001316 28.2706222,10.2198015 C28.2126612,10.6691647 28.1411619,11.1164144 28.0730471,11.5645094 C27.7392425,13.7538344 27.3783613,15.938932 27.0136724,18.123607 C26.61683,20.4689197 26.2166029,22.8142325 25.8146836,25.1586998 C25.6979155,25.8283061 26.0393044,26.4133661 24.63981,26.7253417 C23.9823546,27.0791677 23.1370548,27.107068 22.4893301,26.7156189 C19.3458979,24.5871672 16.1800428,22.4904204 13.067495,20.3167365 C12.7709209,20.0707069 12.6004224,19.6864443 12.5902687,19.3034498 C12.5796919,18.9310236 12.7057676,18.5687429 12.8788045,18.2436626 C13.1246099,17.7875356 13.4774527,17.3982002 13.8717567,17.0655107 C15.3580121,15.608779 16.9293051,14.2433571 18.4578677,12.8318576 C19.4609737,11.9124172 20.4378492,10.9633857 21.3648021,9.96658545 C21.5188007,9.82581596 21.5653387,9.6110685 21.5996076,9.41407576 C21.6211843,9.29444282 21.5839539,9.13169131 21.4439167,9.10928655 C21.1934575,9.07884991 20.9607674,9.20820566 20.7390772,9.30670203 C20.1484673,9.61064577 19.5976263,9.98603109 19.0544006,10.3669119 C17.9654108,11.1202189 16.8844593,11.8857852 15.7997002,12.6450104 C13.566298,14.2036204 11.3159729,15.7470121 8.94549505,17.0925655 C8.29015502,17.4282141 7.54046972,17.5486925 6.80939963,17.5051512 C5.872293,17.4540007 4.96353226,17.1931756 4.07338673,16.9116366 C3.62916011,16.7700216 3.17774125,16.6470068 2.74789911,16.4643869 C1.99863688,16.1566386 1.21933647,15.9017317 0.527189087,15.4730822 C0.307614215,15.3238581 0.0643472572,15.1437746 0.00554011426,14.8694221 C-0.0405748395,14.567592 0.209884359,14.3279034 0.434113033,14.1693792 C0.977338727,13.8624763 1.53283354,13.5792464 2.08875142,13.2964392 C4.04419469,12.3220438 6.04532984,11.444031 8.04731114,10.5706684 C8.82872691,10.2312152 9.60464274,9.87950282 10.3919815,9.55442252 C12.9194195,8.49590356 15.4460112,7.43569368 17.9861414,6.4080341 C20.3625422,5.44336147 22.7461354,4.49602082 25.1415745,3.57953955 C25.7892992,3.31871439 26.4543699,3.07310755 27.1566711,3.01477064 Z"></path></svg></a></div>
+  
+</body>
+</html>
